@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "49YcYIdg4o7aWj9FId2O1FrEub2LjPpG3FBe2ujIxLKf+9QoUinWYhSs0ZiBzvbiV00IBHG8O9R8oqhbQZWIvA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\user\\Desktop\\Study\\TicketsBooking\\src\\Application\\TicketsBooking.Application.Models\\TicketsBooking.Application.Models.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\user\\.nuget\\packages\\itmo.dev.editorconfig\\1.0.2\\itmo.dev.editorconfig.1.0.2.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\stylecop.analyzers\\1.2.0-beta.435\\stylecop.analyzers.1.2.0-beta.435.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\stylecop.analyzers.unstable\\1.2.0.435\\stylecop.analyzers.unstable.1.2.0.435.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\system.linq.async\\6.0.1\\system.linq.async.6.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
