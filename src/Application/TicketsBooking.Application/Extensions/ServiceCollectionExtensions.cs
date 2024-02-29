@@ -1,7 +1,6 @@
-namespace TicketsBooking.Application.Extensions;
-
 using Microsoft.Extensions.DependencyInjection;
 
+namespace TicketsBooking.Application.Extensions;
 public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddApplication(this IServiceCollection collection)

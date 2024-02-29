@@ -1,5 +1,3 @@
-namespace TicketsBooking.Infrastructure.Persistence.Extensions;
-
 using Itmo.Dev.Platform.Postgres.Extensions;
 using Itmo.Dev.Platform.Postgres.Plugins;
 using Microsoft.Extensions.DependencyInjection;
@@ -7,6 +5,7 @@ using TicketsBooking.Application.Abstractions.Persistence;
 using TicketsBooking.Infrastructure.Persistence.Migrations;
 using TicketsBooking.Infrastructure.Persistence.Plugins;
 
+namespace TicketsBooking.Infrastructure.Persistence.Extensions;
 public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddInfrastructurePersistence(this IServiceCollection collection)
