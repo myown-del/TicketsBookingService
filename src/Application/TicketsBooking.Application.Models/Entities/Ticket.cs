@@ -4,7 +4,7 @@ public class Ticket
 {
     public long Id { get; set; }
 
-    public long SeadId { get; set; }
+    public long SeatId { get; set; }
 
     public long SessionId { get; set; }
 

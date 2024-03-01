@@ -12,7 +12,5 @@ public class Action
 
     public string? Duration { get; set; }
 
-    public long HallId { get; set; }
-
-    public VenueType VenueType { get; set; }
+    public ActionType ActionType { get; set; }
 }
