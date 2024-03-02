@@ -1,0 +1,16 @@
+﻿namespace TicketsBooking.Application.Models.Entities;
+
+public class Action
+{
+    public long Id { get; set; }
+
+    public string? Title { get; set; }
+
+    public string? Genre { get; set; }
+
+    public string? Director { get; set; }
+
+    public string? Duration { get; set; }
+
+    public ActionType ActionType { get; set; }
+}

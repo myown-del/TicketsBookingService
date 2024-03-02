@@ -1,12 +1,10 @@
-#pragma warning disable CA1506
-
 using Itmo.Dev.Platform.Common.Extensions;
 using Itmo.Dev.Platform.Logging.Extensions;
+using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using TicketsBooking.Application.Extensions;
 using TicketsBooking.Infrastructure.Persistence.Extensions;
 using TicketsBooking.Presentation.Http.Extensions;
-using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
