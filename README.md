@@ -9,4 +9,5 @@
 
 ## Cсылки
 [Доменные сущности] (src/Application/TicketsBooking.Application.Models/Entities)
+
 [Методы работы приложенеия] (https://pastebin.com/WL5S8uM7)
