@@ -1,4 +1,6 @@
-﻿namespace TicketsBooking.Application.Abstractions.Persistence.Repositories;
+﻿using TicketsBooking.Application.Models.Entities;
+
+namespace TicketsBooking.Application.Abstractions.Persistence.Repositories;
 
 public interface ISession
 {
@@ -6,5 +8,5 @@ public interface ISession
 
     public void DeleteSession(int showId, int sessionId);
 
-    public void GetAllSessions(int showId, int venueId, DateTime fromDate, DateTime toDate);
+    public List<Session> GetAllSessions(int showId, int venueId, DateTime fromDate, DateTime toDate);
 }

@@ -1,4 +1,6 @@
-﻿namespace TicketsBooking.Application.Abstractions.Persistence.Repositories;
+﻿using TicketsBooking.Application.Models.Entities;
+
+namespace TicketsBooking.Application.Abstractions.Persistence.Repositories;
 
 public interface IShow
 {
@@ -6,5 +8,5 @@ public interface IShow
 
     public void DeleteShow(int showId);
 
-    public Dictionary<string, object> GetAllShows(int venueId, string showType);
+    public List<Show> GetAllShows(int venueId, string showType);
 }
