@@ -9,4 +9,6 @@ public interface IUserService
     public JwtTokenDto AuthorizeUser(string phoneNumber, string password);
 
     public JwtTokenDto RefreshToken(string refreshToken);
+
+    public void ChangeUser(string? name = null, string? email = null, DateTime? birthdayDate = null);
 }
