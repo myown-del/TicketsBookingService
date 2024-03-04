@@ -1,6 +1,6 @@
 ﻿namespace TicketsBooking.Application.Models.Entities;
 
-public class Action
+public class Show
 {
     public long Id { get; set; }
 
@@ -12,5 +12,5 @@ public class Action
 
     public string? Duration { get; set; }
 
-    public ActionType ActionType { get; set; }
+    public ActionType ShowType { get; set; }
 }

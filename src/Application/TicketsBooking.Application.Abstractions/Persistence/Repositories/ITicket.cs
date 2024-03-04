@@ -1,4 +1,6 @@
-﻿namespace TicketsBooking.Application.Abstractions.Persistence.Repositories;
+﻿using TicketsBooking.Application.Models.Entities;
+
+namespace TicketsBooking.Application.Abstractions.Persistence.Repositories;
 
 public interface ITicket
 {
@@ -6,5 +8,5 @@ public interface ITicket
 
     public void UnBookTicket(int sessionId, int seatId);
 
-    public Dictionary<string, object> GetAllTickets(int showId, int sessionId, bool onlyAvailable);
+    public List<Ticket> GetAllTickets(int showId, int sessionId, bool onlyAvailable);
 }
