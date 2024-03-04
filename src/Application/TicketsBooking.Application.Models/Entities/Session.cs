@@ -4,9 +4,9 @@ public class Session
 {
     public long Id { get; set; }
 
-    public long ActId { get; set; }
+    public Action? Action { get; set; }
 
-    public long HallId { get; set; }
+    public Hall? Hall { get; set; }
 
-    public DateTime Date { get; set; }
+    public DateTime? Date { get; set; }
 }
