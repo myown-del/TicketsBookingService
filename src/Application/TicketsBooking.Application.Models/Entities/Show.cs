@@ -7,5 +7,5 @@ public class Show
     public string? Genre { get; set; }
     public string? Director { get; set; }
     public string? Duration { get; set; }
-    public ActionType ShowType { get; set; }
+    public ShowType Type { get; set; }
 }
