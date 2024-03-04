@@ -2,7 +2,7 @@
 
 namespace TicketsBooking.Application.Abstractions.Persistence.Repositories;
 
-public interface IShow
+public interface IShowService
 {
     public void CreateShow(string title, string genre, string director, string duration, string type);
 

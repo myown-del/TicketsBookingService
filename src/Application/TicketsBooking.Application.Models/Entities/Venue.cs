@@ -6,6 +6,5 @@ public class Venue
     public string? Name { get; set; }
     public string? Address { get; set; }
     public VenueType Type { get; set; }
-
     public string? City { get; set; }
 }

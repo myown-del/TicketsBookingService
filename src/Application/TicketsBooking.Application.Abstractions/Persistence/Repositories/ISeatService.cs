@@ -2,7 +2,7 @@
 
 namespace TicketsBooking.Application.Abstractions.Persistence.Repositories;
 
-public interface ISeat
+public interface ISeatService
 {
     public void DeleteSeat(int venueId, int hallId, int seatId);
 

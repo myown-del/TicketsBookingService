@@ -2,7 +2,7 @@
 
 namespace TicketsBooking.Application.Abstractions.Persistence.Repositories;
 
-public interface ITicket
+public interface ITicketService
 {
     public int BookTicket(int sessionId, int seatId);
 

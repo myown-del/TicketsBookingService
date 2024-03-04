@@ -2,7 +2,7 @@
 
 namespace TicketsBooking.Application.Abstractions.Persistence.Repositories;
 
-public interface IVenue
+public interface IVenueService
 {
     public void CreateVenue(string type, string name, string address);
 

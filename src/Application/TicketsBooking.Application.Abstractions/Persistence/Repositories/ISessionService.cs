@@ -2,7 +2,7 @@
 
 namespace TicketsBooking.Application.Abstractions.Persistence.Repositories;
 
-public interface ISession
+public interface ISessionService
 {
     public void CreateSession(int showId, int hallId, DateTime someDate);
 
