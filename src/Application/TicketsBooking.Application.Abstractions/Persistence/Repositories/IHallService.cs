@@ -2,7 +2,7 @@
 
 namespace TicketsBooking.Application.Abstractions.Persistence.Repositories;
 
-public interface IHall
+public interface IHallService
 {
     public void CreateHall(int venueId);
 
