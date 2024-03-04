@@ -1,4 +1,4 @@
-﻿using TicketsBooking.Application.Models.Dto;
+using TicketsBooking.Application.Models.Dto;
 
 namespace TicketsBooking.Application.Abstractions.Persistence.Repositories;
 
