@@ -1,6 +1,6 @@
 namespace TicketsBooking.Application.Models.Entities;
 
-public enum ActionType
+public enum ShowType
 {
     Play,
     Movie,
