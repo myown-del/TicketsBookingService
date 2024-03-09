@@ -1,4 +1,5 @@
-﻿using TicketsBooking.Application.Models.Entities;
+﻿using System.Collections.ObjectModel;
+using TicketsBooking.Application.Models.Entities;
 
 namespace TicketsBooking.Application.Abstractions.Persistence.Repositories;
 
@@ -8,5 +9,5 @@ public interface IVenueService
 
     public void DeleteVenue(int venueId);
 
-    public List<Venue> GetAllVenues(string type);
+    public Collection<Venue> GetAllVenues(string type);
 }

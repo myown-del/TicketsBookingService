@@ -1,7 +1,10 @@
 using Itmo.Dev.Platform.Postgres.Extensions;
 using Itmo.Dev.Platform.Postgres.Plugins;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TicketsBooking.Application.Abstractions.Persistence;
+using TicketsBooking.Infrastructure.Persistence.Contexts;
 using TicketsBooking.Infrastructure.Persistence.Migrations;
 using TicketsBooking.Infrastructure.Persistence.Plugins;
 
@@ -19,6 +22,13 @@ public static class ServiceCollectionExtensions
         // TODO: add repositories
         collection.AddScoped<IPersistenceContext, PersistenceContext>();
 
+        return collection;
+    }
+
+    public static IServiceCollection AddInfrastructurePersistence(this IServiceCollection collection, IConfiguration configuration)
+    {
+        collection.AddDbContext<ApplicationDbContext>(options =>
+            options.UseNpgsql(configuration.GetSection("Infrastructure:Persistence:Postgres:ConnectionString").Value));
         return collection;
     }
 }
