@@ -22,6 +22,16 @@ public class VenueRepository : RepositoryBase<Venue, VenueModel>, IVenueReposito
         return venue != null ? MapTo(venue) : null;
     }
 
+    public void RemoveById(int id)
+    {
+        var venue = DbSet.FirstOrDefault(v => v.Id == id);
+        if (venue != null)
+        {
+            DbSet.Remove(venue);
+            _context.SaveChanges();
+        }
+    }
+
     public Collection<Venue> GetAll(string? type = null)
     {
         var venues = DbSet.ToList();

@@ -26,7 +26,7 @@ public class VenueService : IVenueService
 
     public void DeleteVenue(int venueId)
     {
-        throw new NotImplementedException();
+        _venueRepository.RemoveById(venueId);
     }
 
     public Collection<Venue> GetAllVenues(string? type = null)

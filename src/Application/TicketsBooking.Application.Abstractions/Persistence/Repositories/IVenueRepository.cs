@@ -10,4 +10,6 @@ public interface IVenueRepository
     public Collection<Venue> GetAll(string? type = null);
 
     public void Add(Venue venue);
+
+    public void RemoveById(int id);
 }

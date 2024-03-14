@@ -29,4 +29,11 @@ public class VenueController(IVenueService venueService)
         venueService.CreateVenue(venue);
         return new OkResult();
     }
+
+    [HttpDelete("{id}")]
+    public ActionResult DeleteVenue(int id)
+    {
+        venueService.DeleteVenue(id);
+        return new OkResult();
+    }
 }

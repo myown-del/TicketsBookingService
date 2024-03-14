@@ -39,6 +39,7 @@ public abstract class RepositoryBase<TEntity, TModel> where TModel : class
     {
         EntityEntry<TModel> entry = GetEntry(entity);
         entry.State = entry.State is EntityState.Added ? EntityState.Detached : EntityState.Deleted;
+        _context.SaveChanges();
     }
 
     protected abstract TModel MapFrom(TEntity entity);
