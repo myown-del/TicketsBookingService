@@ -1,13 +1,15 @@
 ﻿using System.Collections.ObjectModel;
 using TicketsBooking.Application.Models.Entities;
 
-namespace TicketsBooking.Application.Abstractions.Persistence.Repositories;
+namespace TicketsBooking.Application.Abstractions.Services;
 
 public interface IHallService
 {
-    public void CreateHall(int venueId);
+    public void CreateHall(Hall hall);
 
-    public void DeleteHall(int hallId, int venueId);
+    public void DeleteHall(long hallId, long venueId);
 
-    public Collection<Hall> GetAllHalls(int venueNumber);
+    public Collection<Hall> GetAllHalls(long venueId);
+
+    public Hall? GetHall(long venueId, long hallId);
 }

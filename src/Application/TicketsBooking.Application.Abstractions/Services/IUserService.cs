@@ -1,6 +1,6 @@
 using TicketsBooking.Application.Models.Dto;
 
-namespace TicketsBooking.Application.Abstractions.Persistence.Repositories;
+namespace TicketsBooking.Application.Abstractions.Services;
 
 public interface IUserService
 {

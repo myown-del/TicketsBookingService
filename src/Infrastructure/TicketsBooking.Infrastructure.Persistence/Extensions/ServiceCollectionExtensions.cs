@@ -20,6 +20,7 @@ public static class ServiceCollectionExtensions
         // collection.AddHostedService<MigrationRunnerService>();
         collection.AddScoped<IPersistenceContext, PersistenceContext>();
         collection.AddScoped<IVenueRepository, VenueRepository>();
+        collection.AddScoped<IHallRepository, HallRepository>();
 
         return collection;
     }
