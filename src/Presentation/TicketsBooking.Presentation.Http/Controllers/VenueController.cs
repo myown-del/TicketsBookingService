@@ -12,14 +12,14 @@ public class VenueController(IVenueService venueService)
     [HttpGet("")]
     public ActionResult<Collection<Venue>> GetVenues()
     {
-        var venues = venueService.GetAllVenues();
+        Collection<Venue> venues = venueService.GetAllVenues();
         return venues;
     }
 
     [HttpGet("{id}", Name = nameof(GetVenue))]
     public ActionResult<Venue?> GetVenue(int id)
     {
-        var venue = venueService.GetVenue(id);
+        Venue? venue = venueService.GetVenue(id);
         return venue;
     }
 

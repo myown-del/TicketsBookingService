@@ -18,13 +18,13 @@ public class VenueRepository : RepositoryBase<Venue, VenueModel>, IVenueReposito
 
     public Venue? GetById(int id)
     {
-        var venue = DbSet.FirstOrDefault(v => v.Id == id);
+        VenueModel? venue = DbSet.FirstOrDefault(v => v.Id == id);
         return venue != null ? MapTo(venue) : null;
     }
 
     public void RemoveById(int id)
     {
-        var venue = DbSet.FirstOrDefault(v => v.Id == id);
+        VenueModel? venue = DbSet.FirstOrDefault(v => v.Id == id);
         if (venue != null)
         {
             DbSet.Remove(venue);
