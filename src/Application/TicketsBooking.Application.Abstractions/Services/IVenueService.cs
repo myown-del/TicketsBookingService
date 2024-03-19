@@ -11,5 +11,5 @@ public interface IVenueService
 
     public Venue? GetVenue(int venueId);
 
-    public Collection<Venue> GetAllVenues(string? type = null);
+    public Collection<Venue> GetAllVenues(VenueType? type = null);
 }

@@ -29,8 +29,8 @@ public class VenueService : IVenueService
         _venueRepository.RemoveById(venueId);
     }
 
-    public Collection<Venue> GetAllVenues(string? type = null)
+    public Collection<Venue> GetAllVenues(VenueType? type = null)
     {
-        return _venueRepository.GetAll();
+        return _venueRepository.GetAll(type: type);
     }
 }

@@ -14,22 +14,22 @@ public class ShowModel
         Duration = duration;
         Type = type;
     }
-    
+
     [Column("id")]
     public int Id { get; set; }
-    
+
     [Column("title")]
     public string? Title { get; set; }
-    
+
     [Column("genre")]
     public string? Genre { get; set; }
-    
+
     [Column("director")]
     public string? Director { get; set; }
-    
+
     [Column("duration")]
     public string? Duration { get; set; }
-    
+
     [Column("type")]
     public ShowType Type { get; set; }
 }

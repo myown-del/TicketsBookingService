@@ -21,8 +21,8 @@ public static class ServiceCollectionExtensions
         collection.AddScoped<IPersistenceContext, PersistenceContext>();
         collection.AddScoped<IVenueRepository, VenueRepository>();
         collection.AddScoped<IHallRepository, HallRepository>();
-        collection.AddScoped<IShowRepository, ShowRepository>();
 
+        // collection.AddScoped<IShowRepository, ShowRepository>();
         return collection;
     }
 
