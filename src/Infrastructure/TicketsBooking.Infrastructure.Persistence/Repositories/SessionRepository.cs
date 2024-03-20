@@ -16,10 +16,9 @@ public class SessionRepository : RepositoryBase<Session, SessionModel>, ISession
         _context = context;
     }
 
-<<<<<<< HEAD
     public Session? GetById(int sessionId)
     {
-        SessionModel? session = DbSet.FirstOrDefault(x => x.Id == id);
+        SessionModel? session = DbSet.FirstOrDefault(x => x.Id == sessionId);
 
         if (session is null)
             return null;
@@ -39,18 +38,17 @@ public class SessionRepository : RepositoryBase<Session, SessionModel>, ISession
 
     public Collection<Session> GetAllByParametrs(int showId, int venueId, DateTime fromDate, DateTime toDate)
     {
-<<<<<<< HEAD
-        IEnumerable<HallModel> halls = DbSet.ToList().Where(x => x.ShowId == venueId);
-        List<int> _hallsId = new List<int>();
-        IEnumerable<SessionModel> sessions = new IEnumerable<SessionModel>();
-        foreach (var hall in halls)
+        IEnumerable<HallModel> halls = DbSet.ToList().Where(x => x.venueId == venueId);
+        var sessions = new IEnumerable<SessionModel>();
+        foreach (HallModel hall in halls)
         {
             sessions.Append(DbSet.Where(x => x.ShowId == showId && x.HallId == hall.Id && x.ShowId == showId && x.Date < toDate && x.Date < fromDate));
         }
+
         return new Collection<Session>(sessions.Select(MapTo).ToList());
     }
 
-    protected override DbSet<SessionModel> DbSet => _context.Session;
+    protected override DbSet<SessionModel> DbSet => _context.Sessions;
 
     protected Session MapTo(SessionModel model)
     {
