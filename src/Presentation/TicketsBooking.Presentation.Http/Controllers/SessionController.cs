@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Collections.ObjectModel;
 using TicketsBooking.Application.Abstractions.Services;
 using TicketsBooking.Application.Models.Entities;
 
@@ -23,7 +24,7 @@ public class SessionController : ControllerBase
         if (session is null)
             return new NotFoundResult();
 
-        _sessionService.DeleteSession(sessionId);
+        _sessionService.DeleteSession(id);
         return new OkResult();
     }
 
