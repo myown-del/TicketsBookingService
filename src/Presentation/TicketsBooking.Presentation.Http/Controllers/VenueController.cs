@@ -12,7 +12,7 @@ public class VenueController(IVenueService venueService)
     [HttpGet("")]
     public ActionResult<Collection<Venue>> GetVenues(VenueType? type = null)
     {
-        Collection<Venue> venues = venueService.GetAllVenues(type: type);
+        Collection<Venue> venues = venueService.GetAllVenues(type);
         return venues;
     }
 

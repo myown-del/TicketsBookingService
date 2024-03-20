@@ -7,9 +7,12 @@ using TicketsBooking.Infrastructure.Persistence.Contexts;
 using TicketsBooking.Infrastructure.Persistence.Repositories;
 
 namespace TicketsBooking.Infrastructure.Persistence.Extensions;
+
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddInfrastructurePersistence(this IServiceCollection collection, IConfiguration configuration)
+    public static IServiceCollection AddInfrastructurePersistence(
+        this IServiceCollection collection,
+        IConfiguration configuration)
     {
         collection.AddContext(configuration);
 
@@ -21,6 +24,7 @@ public static class ServiceCollectionExtensions
         collection.AddScoped<IPersistenceContext, PersistenceContext>();
         collection.AddScoped<IVenueRepository, VenueRepository>();
         collection.AddScoped<IHallRepository, HallRepository>();
+        collection.AddScoped<IUserRepository, UserRepository>();
 
         // collection.AddScoped<IShowRepository, ShowRepository>();
         return collection;

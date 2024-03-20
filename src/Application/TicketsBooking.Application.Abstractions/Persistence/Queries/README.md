@@ -1,6 +1,7 @@
 Folder for repository queries.
 
-Use `record`s for defining query types. Add `[GenerateBuilder]` attribute for source generator to generate builder class for this query.
+Use `record`s for defining query types. Add `[GenerateBuilder]` attribute for source generator to generate builder class
+for this query.
 
 ## Sample
 

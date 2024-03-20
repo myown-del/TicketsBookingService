@@ -48,12 +48,14 @@ begin
 
     create table if not exists users(
         id bigint default nextval('user_seq'::regclass),
-        phone_number text not null,
+        phone_number text unique not null,
         password_hash text not null,
         is_admin boolean not null default false,
         name text,
         email text,
-        birthday_date date,    
+        birthday_date date,
+        refresh_token varchar(32) not null,
+        refresh_token_expires_at timestamp not null
         --
         constraint user_pk primary key (id)
     )

@@ -12,7 +12,7 @@ builder.Configuration.AddUserSecrets<Program>();
 builder.Services.AddOptions<JsonSerializerSettings>();
 builder.Services.AddSingleton(sp => sp.GetRequiredService<IOptions<JsonSerializerSettings>>().Value);
 
-builder.Services.AddApplication();
+builder.Services.AddApplication(builder.Configuration);
 builder.Services.AddInfrastructurePersistence(builder.Configuration);
 builder.Services
     .AddControllers()

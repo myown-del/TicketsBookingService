@@ -6,7 +6,8 @@
 
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Application\TicketsBooking.Application.Abstractions\TicketsBooking.Application.Abstractions.csproj" />
+        <ProjectReference Include="..\..\Application\TicketsBooking.Application.Abstractions\TicketsBooking.Application.Abstractions.csproj"/>
+        <ProjectReference Include="..\..\Application\TicketsBooking.Application\TicketsBooking.Application.csproj" />
     </ItemGroup>
 
 </Project>

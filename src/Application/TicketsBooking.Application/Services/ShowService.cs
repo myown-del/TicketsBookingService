@@ -16,7 +16,7 @@ public class ShowService : IShowService
 
     public void CreateShow(Show show)
     {
-        _showRepository.CreateShow(show.Title, show.Genre, show.Director, show.Duration, show.Type);
+        _showRepository.CreateShow(show);
     }
 
     public void DeleteShow(int showId)
@@ -24,8 +24,8 @@ public class ShowService : IShowService
         _showRepository.DeleteShow(showId);
     }
 
-    public Collection<Show> GetAllShows(int venueId, string showType)
+    public Collection<Show> GetAllShows(ShowType showType)
     {
-        return _showRepository.GetAllShows(venueId, showType);
+        return _showRepository.GetAllShows(showType);
     }
 }

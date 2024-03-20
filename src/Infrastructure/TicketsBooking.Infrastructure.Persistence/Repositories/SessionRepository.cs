@@ -16,9 +16,10 @@ public class SessionRepository : RepositoryBase<Session, SessionModel>, ISession
         _context = context;
     }
 
+<<<<<<< HEAD
     public Session? GetById(int sessionId)
     {
-        SessionModel? session = DbSet.FirstOrDefault(x => x.Id == sessionId);
+        SessionModel? session = DbSet.FirstOrDefault(x => x.Id == id);
 
         if (session is null)
             return null;
@@ -28,7 +29,7 @@ public class SessionRepository : RepositoryBase<Session, SessionModel>, ISession
 
     public void RemoveById(int sessionId)
     {
-        var session = DbSet.FirstOrDefault(v => v.Id == id);
+        SessionModel? session = DbSet.FirstOrDefault(v => v.Id == sessionId);
         if (session != null)
         {
             DbSet.Remove(session);
@@ -38,6 +39,7 @@ public class SessionRepository : RepositoryBase<Session, SessionModel>, ISession
 
     public Collection<Session> GetAllByParametrs(int showId, int venueId, DateTime fromDate, DateTime toDate)
     {
+<<<<<<< HEAD
         IEnumerable<HallModel> halls = DbSet.ToList().Where(x => x.ShowId == venueId);
         List<int> _hallsId = new List<int>();
         IEnumerable<SessionModel> sessions = new IEnumerable<SessionModel>();

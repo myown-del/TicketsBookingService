@@ -20,14 +20,14 @@ public class SessionService : ISessionService
         _sessionRepository.Add(session);
     }
 
-    public void DeleteSession(int showId, int sessionId)
+    public void DeleteSession(int sessionId)
     {
         _sessionRepository.RemoveById(sessionId);
     }
 
     public Session? GetSession(int sessionId)
     {
-        return _sessionRepository.GetById(sessionId);
+        _sessionRepository.GetById(sessionId);
     }
 
     public Collection<Session> GetAllSessions(int showId, int venueId, DateTime fromDate, DateTime toDate)
