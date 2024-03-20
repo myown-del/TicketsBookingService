@@ -1,4 +1,4 @@
-﻿// unset
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TicketsBooking.Infrastructure.Persistence.Models;
 
@@ -23,5 +23,4 @@ public class SessionModel
 
     [Column("date")]
     public DateTime Date { get; set; }
-    
 }

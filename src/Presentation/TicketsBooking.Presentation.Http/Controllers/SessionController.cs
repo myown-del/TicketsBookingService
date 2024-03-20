@@ -16,10 +16,10 @@ public class SessionController : ControllerBase
         _sessionService = sessionService;
     }
 
-    [HttpDelete("{sessionId}")]
-    public ActionResult DeleteSession(int sessionId)
+    [HttpDelete("{id}")]
+    public ActionResult DeleteSession(int id)
     {
-        Session? session = _sessionService.GetSession(sessionId);
+        Session? session = _sessionService.GetSession(id);
 
         if (session is null)
             return new NotFoundResult();
@@ -28,11 +28,27 @@ public class SessionController : ControllerBase
         return new OkResult();
     }
 
-    [HttpPost("{venueId}/halls")]
-    public ActionResult CreateSession(int showId, int hallId, DateTime someDate)
+    [HttpGet("{id}")]
+    public ActionResult<Session> GetSession(int id)
     {
-        _sessionService.CreateSession(showId, hallId, someDate);
+        Session? session = _sessionService.GetSession(id);
+
+        if (session is null)
+            return new NotFoundResult();
+        return session;
+    }
+
+    [HttpGet("")]
+    public ActionResult<Collection<Session>> GetAllSessions(int showId, int venueId, DateTime fromDate, DateTime toDate)
+    {
+        Collection<Session> sessions = _sessionService.GetAllSessions(showId, venueId, fromDate, toDate);
+        return sessions;
+    }
+
+    [HttpPost("")]
+    public ActionResult CreateSession(Session session)
+    {
+        _sessionService.CreateSession(session);
         return new OkResult();
     }
-    
 }

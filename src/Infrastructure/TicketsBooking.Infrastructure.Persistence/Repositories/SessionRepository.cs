@@ -7,15 +7,15 @@ using TicketsBooking.Infrastructure.Persistence.Models;
 
 namespace TicketsBooking.Infrastructure.Persistence.Repositories;
 
-public class SessionRepository : RepositoryBase<Venue, VenueModel>, ISessionRepository
+public class SessionRepository : RepositoryBase<Session, SessionModel>, ISessionRepository
 {
     private readonly ApplicationDbContext _context;
-    
+
     public SessionRepository(ApplicationDbContext context) : base(context)
     {
         _context = context;
     }
-    
+
     public Session? GetById(int sessionId)
     {
         SessionModel? session = DbSet.FirstOrDefault(x => x.Id == sessionId);
@@ -25,8 +25,8 @@ public class SessionRepository : RepositoryBase<Venue, VenueModel>, ISessionRepo
 
         return MapTo(session);
     }
-    
-    public void RemoveById(int id)
+
+    public void RemoveById(int sessionId)
     {
         var session = DbSet.FirstOrDefault(v => v.Id == id);
         if (session != null)
@@ -35,18 +35,21 @@ public class SessionRepository : RepositoryBase<Venue, VenueModel>, ISessionRepo
             _context.SaveChanges();
         }
     }
-    
-    public void Add(int showId, int venueId, DateTime someDate)
-    { 
-        // дописать
-    }
 
     public Collection<Session> GetAllByParametrs(int showId, int venueId, DateTime fromDate, DateTime toDate)
-    { 
-        // дописать
+    {
+        IEnumerable<HallModel> halls = DbSet.ToList().Where(x => x.ShowId == venueId);
+        List<int> _hallsId = new List<int>();
+        IEnumerable<SessionModel> sessions = new IEnumerable<SessionModel>();
+        foreach (var hall in halls)
+        {
+            sessions.Append(DbSet.Where(x => x.ShowId == showId && x.HallId == hall.Id && x.ShowId == showId && x.Date < toDate && x.Date < fromDate));
+        }
+        return new Collection<Session>(sessions.Select(MapTo).ToList());
     }
+
     protected override DbSet<SessionModel> DbSet => _context.Session;
-    
+
     protected Session MapTo(SessionModel model)
     {
         return new Session(model.Id, model.ShowId, model.HallId, model.Date);
@@ -60,12 +63,12 @@ public class SessionRepository : RepositoryBase<Venue, VenueModel>, ISessionRepo
             entity.HallId,
             entity.Date);
     }
-    
+
     protected override bool Equal(Session entity, SessionModel model)
     {
         return entity.Id.Equals(model.Id);
     }
-    
+
     protected override void UpdateModel(SessionModel model, Session entity)
     {
         model.Id = entity.Id;

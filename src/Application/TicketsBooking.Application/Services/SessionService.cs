@@ -15,17 +15,17 @@ public class SessionService : ISessionService
         _sessionRepository = sessionRepository;
     }
 
-    public void CreateSession(int showId, int hallId, DateTime someDate)
+    public void CreateSession(Session session)
     {
-        _sessionRepository.Add(showId, hallId, someDate);
+        _sessionRepository.Add(session);
     }
 
     public void DeleteSession(int showId, int sessionId)
     {
-        _sessionRepository.RemoveById(showId, sessionId);
+        _sessionRepository.RemoveById(sessionId);
     }
-    
-    public Session GetSession(int sessionId)
+
+    public Session? GetSession(int sessionId)
     {
         return _sessionRepository.GetById(sessionId);
     }

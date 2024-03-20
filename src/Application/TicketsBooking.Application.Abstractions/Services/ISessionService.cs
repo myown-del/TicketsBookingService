@@ -5,11 +5,11 @@ namespace TicketsBooking.Application.Abstractions.Services;
 
 public interface ISessionService
 {
-    public void CreateSession(int showId, int hallId, DateTime someDate);
+    public void CreateSession(Session session);
 
     public void DeleteSession(int sessionId);
 
     public Collection<Session> GetAllSessions(int showId, int venueId, DateTime fromDate, DateTime toDate);
-    
+
     public Session? GetSession(int sessionId);
 }
