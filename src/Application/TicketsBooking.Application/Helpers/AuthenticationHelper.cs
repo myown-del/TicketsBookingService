@@ -34,7 +34,7 @@ public static class AuthenticationHelper
             _refreshTokenExpirySeconds = Convert.ToInt32(refreshTokenExpirySeconds);
     }
 
-    public static DateTime GetRefreshTokenExpiry()
+    public static DateTime GetRefreshTokenExpiryDate()
     {
         return DateTime.UtcNow.AddSeconds(_refreshTokenExpirySeconds);
     }
@@ -47,7 +47,17 @@ public static class AuthenticationHelper
         return Convert.ToHexString(hashBytes);
     }
 
-    public static JwtTokenDto GenerateJwtToken(string phoneNumber)
+    public static JwtTokenDto GenerateJwtToken(string phoneNumber, string? refreshToken = null)
+    {
+        refreshToken ??= Guid.NewGuid().ToString("N");
+
+        return new JwtTokenDto(
+            refreshToken,
+            GenerateAccessToken(phoneNumber),
+            _accessTokenExpirySeconds);
+    }
+
+    private static string GenerateAccessToken(string phoneNumber)
     {
         var claims = new List<Claim>
         {
@@ -65,12 +75,6 @@ public static class AuthenticationHelper
 
         var tokenHandler = new JwtSecurityTokenHandler();
         SecurityToken? accessToken = tokenHandler.CreateToken(tokenDescriptor);
-
-        string refreshToken = Guid.NewGuid().ToString("N");
-
-        return new JwtTokenDto(
-            refreshToken,
-            tokenHandler.WriteToken(accessToken),
-            _accessTokenExpirySeconds);
+        return tokenHandler.WriteToken(accessToken);
     }
 }

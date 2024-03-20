@@ -4,9 +4,9 @@ namespace TicketsBooking.Application.Abstractions.Services;
 
 public interface IAuthenticationService
 {
-    public JwtTokenDto RegisterUser(UserRegister userRegister);
+    public JwtTokenDto RegisterUser(UserCredentialsDto userCredentials);
 
-    public JwtTokenDto AuthorizeUser(string phoneNumber, string password);
+    public JwtTokenDto AuthorizeUser(UserCredentialsDto userCredentials);
 
-    public JwtTokenDto RefreshToken(string refreshToken);
+    public JwtTokenDto RefreshToken(string accessToken, string refreshToken);
 }

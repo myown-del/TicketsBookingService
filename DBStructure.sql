@@ -48,7 +48,7 @@ begin
 
     create table if not exists users(
         id bigint default nextval('user_seq'::regclass),
-        phone_number text not null,
+        phone_number text unique not null,
         password_hash text not null,
         is_admin boolean not null default false,
         name text,

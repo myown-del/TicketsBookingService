@@ -1,8 +1,8 @@
 ﻿namespace TicketsBooking.Application.Models.Dto;
 
-public class UserRegister
+public class UserCredentialsDto
 {
-    public UserRegister(string phoneNumber, string password)
+    public UserCredentialsDto(string phoneNumber, string password)
     {
         PhoneNumber = phoneNumber;
         Password = password;
