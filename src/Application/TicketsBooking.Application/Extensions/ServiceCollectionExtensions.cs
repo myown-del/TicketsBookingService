@@ -8,6 +8,7 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddApplication(this IServiceCollection collection)
     {
         collection.AddScoped<IVenueService, VenueService>();
+        collection.AddScoped<IHallService, HallService>();
         return collection;
     }
 }

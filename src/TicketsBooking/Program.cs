@@ -4,7 +4,6 @@ using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using TicketsBooking.Application.Extensions;
 using TicketsBooking.Infrastructure.Persistence.Extensions;
-using TicketsBooking.Presentation.Http.Extensions;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -17,8 +16,7 @@ builder.Services.AddApplication();
 builder.Services.AddInfrastructurePersistence(builder.Configuration);
 builder.Services
     .AddControllers()
-    .AddNewtonsoftJson()
-    .AddPresentationHttp();
+    .AddNewtonsoftJson();
 
 builder.Services.AddSwaggerGen().AddEndpointsApiExplorer();
 

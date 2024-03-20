@@ -10,16 +10,16 @@ namespace TicketsBooking.Presentation.Http.Controllers;
 public class VenueController(IVenueService venueService)
 {
     [HttpGet("")]
-    public ActionResult<Collection<Venue>> GetVenues()
+    public ActionResult<Collection<Venue>> GetVenues(VenueType? type = null)
     {
-        var venues = venueService.GetAllVenues();
+        Collection<Venue> venues = venueService.GetAllVenues(type: type);
         return venues;
     }
 
     [HttpGet("{id}", Name = nameof(GetVenue))]
     public ActionResult<Venue?> GetVenue(int id)
     {
-        var venue = venueService.GetVenue(id);
+        Venue? venue = venueService.GetVenue(id);
         return venue;
     }
 

@@ -1,11 +1,11 @@
 ﻿using System.Collections.ObjectModel;
 using TicketsBooking.Application.Models.Entities;
 
-namespace TicketsBooking.Application.Abstractions.Persistence.Repositories;
+namespace TicketsBooking.Application.Abstractions.Services;
 
 public interface IShowService
 {
-    public void CreateShow(string title, string genre, string director, string duration, string type);
+    public void CreateShow(Show show);
 
     public void DeleteShow(int showId);
 

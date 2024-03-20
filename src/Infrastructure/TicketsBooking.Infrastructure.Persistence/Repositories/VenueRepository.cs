@@ -18,13 +18,13 @@ public class VenueRepository : RepositoryBase<Venue, VenueModel>, IVenueReposito
 
     public Venue? GetById(int id)
     {
-        var venue = DbSet.FirstOrDefault(v => v.Id == id);
+        VenueModel? venue = DbSet.FirstOrDefault(v => v.Id == id);
         return venue != null ? MapTo(venue) : null;
     }
 
     public void RemoveById(int id)
     {
-        var venue = DbSet.FirstOrDefault(v => v.Id == id);
+        VenueModel? venue = DbSet.FirstOrDefault(v => v.Id == id);
         if (venue != null)
         {
             DbSet.Remove(venue);
@@ -32,9 +32,19 @@ public class VenueRepository : RepositoryBase<Venue, VenueModel>, IVenueReposito
         }
     }
 
-    public Collection<Venue> GetAll(string? type = null)
+    public Collection<Venue> GetAll(VenueType? type = null)
     {
-        var venues = DbSet.ToList();
+        List<VenueModel> venues;
+
+        if (type != null)
+        {
+            venues = DbSet.Where(v => v.Type.ToLower() == type.ToString()!.ToLower()).ToList();
+        }
+        else
+        {
+            venues = DbSet.ToList();
+        }
+
         return new Collection<Venue>(venues.Select(MapTo).ToList());
     }
 

@@ -7,7 +7,7 @@ public interface IVenueRepository
 {
     public Venue? GetById(int id);
 
-    public Collection<Venue> GetAll(string? type = null);
+    public Collection<Venue> GetAll(VenueType? type = null);
 
     public void Add(Venue venue);
 

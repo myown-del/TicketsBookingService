@@ -1,7 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <ItemGroup>
-        <ProjectReference Include="..\..\Application\TicketsBooking.Application.Abstractions\TicketsBooking.Application.Abstractions.csproj" />
+        <ProjectReference Include="..\..\Application\TicketsBooking.Application.Abstractions\TicketsBooking.Application.Abstractions.csproj"/>
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" />

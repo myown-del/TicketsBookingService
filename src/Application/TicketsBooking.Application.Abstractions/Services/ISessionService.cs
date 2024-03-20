@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using TicketsBooking.Application.Models.Entities;
 
-namespace TicketsBooking.Application.Abstractions.Persistence.Repositories;
+namespace TicketsBooking.Application.Abstractions.Services;
 
 public interface ISessionService
 {
