@@ -6,25 +6,30 @@ using TicketsBooking.Application.Models.Entities;
 
 namespace TicketsBooking.Application.Services;
 
-public class AuthorizationService : IAuthorizationService
+public class AuthenticationService : IAuthenticationService
 {
     private readonly IUserRepository _userRepository;
 
-    public AuthorizationService(IUserRepository userRepository)
+    public AuthenticationService(IUserRepository userRepository)
     {
         _userRepository = userRepository;
     }
 
     public JwtTokenDto RegisterUser(UserRegister userRegister)
     {
-        var passwordHash = AuthorizationHelper.CalculatePasswordHash(userRegister.Password);
-        var user = new User(phoneNumber: userRegister.PhoneNumber, passwordHash: passwordHash);
+        string passwordHash = AuthenticationHelper.CalculatePasswordHash(userRegister.Password);
+        var jwtToken = AuthenticationHelper.GenerateJwtToken(userRegister.PhoneNumber);
+
+        var user = new User(
+            phoneNumber: userRegister.PhoneNumber,
+            passwordHash: passwordHash,
+            refreshToken: jwtToken.RefreshToken,
+            refreshTokenExpiresAt: AuthenticationHelper.GetRefreshTokenExpiry());
 
         _userRepository.Add(user);
-        var createdUser = _userRepository.GetByPhoneNumber(user.PhoneNumber);
+        User? createdUser = _userRepository.GetByPhoneNumber(user.PhoneNumber);
 
-        return new JwtTokenDto(
-            "1", "2", 1);
+        return jwtToken;
     }
 
     public JwtTokenDto AuthorizeUser(string phoneNumber, string password)

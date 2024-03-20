@@ -16,6 +16,8 @@ public class SessionRepository : RepositoryBase<Session, SessionModel>, ISession
         _context = context;
     }
 
+    protected override DbSet<SessionModel> DbSet => _context.Sessions;
+
     public Session? GetById(int id)
     {
         SessionModel? session = DbSet.FirstOrDefault(x => x.Id == id);
@@ -28,7 +30,7 @@ public class SessionRepository : RepositoryBase<Session, SessionModel>, ISession
 
     public void RemoveById(int sessionId)
     {
-        var session = DbSet.FirstOrDefault(v => v.Id == sessionId);
+        SessionModel? session = DbSet.FirstOrDefault(v => v.Id == sessionId);
         if (session != null)
         {
             DbSet.Remove(session);
@@ -40,8 +42,6 @@ public class SessionRepository : RepositoryBase<Session, SessionModel>, ISession
     {
         throw new NotImplementedException();
     }
-
-    protected override DbSet<SessionModel> DbSet => _context.Sessions;
 
     protected VenueModel MapFrom(Venue entity)
     {

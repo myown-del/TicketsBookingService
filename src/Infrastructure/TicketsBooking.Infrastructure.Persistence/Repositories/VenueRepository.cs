@@ -16,6 +16,8 @@ public class VenueRepository : RepositoryBase<Venue, VenueModel>, IVenueReposito
         _context = context;
     }
 
+    protected override DbSet<VenueModel> DbSet => _context.Venues;
+
     public Venue? GetById(int id)
     {
         VenueModel? venue = DbSet.FirstOrDefault(v => v.Id == id);
@@ -37,18 +39,12 @@ public class VenueRepository : RepositoryBase<Venue, VenueModel>, IVenueReposito
         List<VenueModel> venues;
 
         if (type != null)
-        {
             venues = DbSet.Where(v => v.Type.ToLower() == type.ToString()!.ToLower()).ToList();
-        }
         else
-        {
             venues = DbSet.ToList();
-        }
 
         return new Collection<Venue>(venues.Select(MapTo).ToList());
     }
-
-    protected override DbSet<VenueModel> DbSet => _context.Venues;
 
     protected override VenueModel MapFrom(Venue entity)
     {

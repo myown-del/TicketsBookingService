@@ -5,6 +5,8 @@ public class User
     public User(
         string phoneNumber,
         string passwordHash,
+        string refreshToken,
+        DateTime refreshTokenExpiresAt,
         long? id = null,
         string? name = null,
         string? email = null,
@@ -17,6 +19,8 @@ public class User
         BirthdayDate = birthdayDate;
         PhoneNumber = phoneNumber;
         PasswordHash = passwordHash;
+        RefreshToken = refreshToken;
+        RefreshTokenExpiresAt = refreshTokenExpiresAt;
         IsAdmin = isAdmin;
     }
 
@@ -33,4 +37,8 @@ public class User
     public string PasswordHash { get; set; }
 
     public bool IsAdmin { get; set; }
+
+    public string RefreshToken { get; set; }
+
+    public DateTime RefreshTokenExpiresAt { get; set; }
 }

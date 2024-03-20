@@ -6,12 +6,12 @@ namespace TicketsBooking.Presentation.Http.Controllers;
 
 [ApiController]
 [Route("api/auth")]
-public class AuthorizationController(IAuthorizationService authService)
+public class AuthenticationController(IAuthenticationService authService)
 {
     [HttpPost("register")]
     public ActionResult<JwtTokenDto> RegisterUser([FromBody] UserRegister userRegister)
     {
-        var jwtTokenDto = authService.RegisterUser(userRegister);
+        JwtTokenDto jwtTokenDto = authService.RegisterUser(userRegister);
         return jwtTokenDto;
     }
 }

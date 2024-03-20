@@ -25,12 +25,6 @@ public class SessionService : ISessionService
         throw new NotImplementedException();
     }
 
-    public void DeleteSession(int showId, int sessionId)
-    {
-        // _sessionRepository.RemoveById(showId, sessionId);
-        throw new NotImplementedException();
-    }
-
     public Session GetSession(int sessionId)
     {
         // return _sessionRepository.GetById(sessionId);
@@ -40,5 +34,11 @@ public class SessionService : ISessionService
     public Collection<Session> GetAllSessions(int showId, int venueId, DateTime fromDate, DateTime toDate)
     {
         return _sessionRepository.GetAllByParametrs(showId, venueId, fromDate, toDate);
+    }
+
+    public void DeleteSession(int showId, int sessionId)
+    {
+        // _sessionRepository.RemoveById(showId, sessionId);
+        throw new NotImplementedException();
     }
 }

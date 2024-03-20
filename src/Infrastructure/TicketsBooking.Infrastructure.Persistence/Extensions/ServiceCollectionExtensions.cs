@@ -7,9 +7,12 @@ using TicketsBooking.Infrastructure.Persistence.Contexts;
 using TicketsBooking.Infrastructure.Persistence.Repositories;
 
 namespace TicketsBooking.Infrastructure.Persistence.Extensions;
+
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddInfrastructurePersistence(this IServiceCollection collection, IConfiguration configuration)
+    public static IServiceCollection AddInfrastructurePersistence(
+        this IServiceCollection collection,
+        IConfiguration configuration)
     {
         collection.AddContext(configuration);
 

@@ -31,6 +31,6 @@ public class VenueService : IVenueService
 
     public Collection<Venue> GetAllVenues(VenueType? type = null)
     {
-        return _venueRepository.GetAll(type: type);
+        return _venueRepository.GetAll(type);
     }
 }

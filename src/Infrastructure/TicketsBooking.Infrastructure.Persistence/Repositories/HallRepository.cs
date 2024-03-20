@@ -16,6 +16,8 @@ public class HallRepository : RepositoryBase<Hall, HallModel>, IHallRepository
         _context = context;
     }
 
+    protected override DbSet<HallModel> DbSet => _context.Halls;
+
     public Collection<Hall> GetAll(long venueId)
     {
         IEnumerable<HallModel> halls = DbSet.ToList().Where(x => x.VenueId == venueId);
@@ -42,8 +44,6 @@ public class HallRepository : RepositoryBase<Hall, HallModel>, IHallRepository
             _context.SaveChanges();
         }
     }
-
-    protected override DbSet<HallModel> DbSet => _context.Halls;
 
     protected override HallModel MapFrom(Hall entity)
     {

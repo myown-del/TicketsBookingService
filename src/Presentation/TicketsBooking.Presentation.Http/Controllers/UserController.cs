@@ -4,6 +4,4 @@ namespace TicketsBooking.Presentation.Http.Controllers;
 
 [ApiController]
 [Route("api/users")]
-public class UserController : ControllerBase
-{
-}
+public class UserController : ControllerBase { }

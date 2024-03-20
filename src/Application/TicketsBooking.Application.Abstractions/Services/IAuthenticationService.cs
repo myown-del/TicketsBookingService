@@ -2,7 +2,7 @@
 
 namespace TicketsBooking.Application.Abstractions.Services;
 
-public interface IAuthorizationService
+public interface IAuthenticationService
 {
     public JwtTokenDto RegisterUser(UserRegister userRegister);
 

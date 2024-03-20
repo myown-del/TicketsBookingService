@@ -15,6 +15,8 @@ public class UserRepository : RepositoryBase<User, UserModel>, IUserRepository
         _context = context;
     }
 
+    protected override DbSet<UserModel> DbSet => _context.Users;
+
     public User? GetById(int id)
     {
         UserModel? user = DbSet.FirstOrDefault(v => v.Id == id);
@@ -27,8 +29,6 @@ public class UserRepository : RepositoryBase<User, UserModel>, IUserRepository
         return user != null ? MapTo(user) : null;
     }
 
-    protected override DbSet<UserModel> DbSet => _context.Users;
-
     protected override UserModel MapFrom(User entity)
     {
         return new UserModel(
@@ -38,7 +38,9 @@ public class UserRepository : RepositoryBase<User, UserModel>, IUserRepository
             entity.BirthdayDate,
             entity.PhoneNumber,
             entity.PasswordHash,
-            entity.IsAdmin);
+            entity.IsAdmin,
+            entity.RefreshToken,
+            entity.RefreshTokenExpiresAt);
     }
 
     protected User MapTo(UserModel model)
@@ -46,6 +48,8 @@ public class UserRepository : RepositoryBase<User, UserModel>, IUserRepository
         return new User(
             phoneNumber: model.PhoneNumber,
             passwordHash: model.PasswordHash,
+            refreshToken: model.RefreshToken,
+            refreshTokenExpiresAt: model.RefreshTokenExpiresAt,
             id: model.Id,
             name: model.Name,
             email: model.Email,
