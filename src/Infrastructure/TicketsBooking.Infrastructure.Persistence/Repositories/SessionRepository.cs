@@ -7,46 +7,57 @@ using TicketsBooking.Infrastructure.Persistence.Models;
 
 namespace TicketsBooking.Infrastructure.Persistence.Repositories;
 
-public class SessionRepository : RepositoryBase<Venue, VenueModel>, ISessionRepository
+public class SessionRepository : RepositoryBase<Session, SessionModel>, ISessionRepository
 {
     private readonly ApplicationDbContext _context;
-    
+
     public SessionRepository(ApplicationDbContext context) : base(context)
     {
         _context = context;
     }
-    
-    public Session? GetById(int sessionId)
+
+    public Session? GetById(int id)
     {
-        SessionModel? session = DbSet.FirstOrDefault(x => x.Id == sessionId);
+        SessionModel? session = DbSet.FirstOrDefault(x => x.Id == id);
 
         if (session is null)
             return null;
 
         return MapTo(session);
     }
-    
-    public void RemoveById(int id)
+
+    public void RemoveById(int sessionId)
     {
-        var session = DbSet.FirstOrDefault(v => v.Id == id);
+        var session = DbSet.FirstOrDefault(v => v.Id == sessionId);
         if (session != null)
         {
             DbSet.Remove(session);
             _context.SaveChanges();
         }
     }
-    
-    public void Add(int showId, int venueId, DateTime someDate)
-    { 
-        // дописать
-    }
 
     public Collection<Session> GetAllByParametrs(int showId, int venueId, DateTime fromDate, DateTime toDate)
-    { 
-        // дописать
+    {
+        throw new NotImplementedException();
     }
-    protected override DbSet<SessionModel> DbSet => _context.Session;
-    
+
+    protected override DbSet<SessionModel> DbSet => _context.Sessions;
+
+    protected VenueModel MapFrom(Venue entity)
+    {
+        throw new NotImplementedException();
+    }
+
+    protected bool Equal(Venue entity, VenueModel model)
+    {
+        throw new NotImplementedException();
+    }
+
+    protected void UpdateModel(VenueModel model, Venue entity)
+    {
+        throw new NotImplementedException();
+    }
+
     protected Session MapTo(SessionModel model)
     {
         return new Session(model.Id, model.ShowId, model.HallId, model.Date);
@@ -60,12 +71,12 @@ public class SessionRepository : RepositoryBase<Venue, VenueModel>, ISessionRepo
             entity.HallId,
             entity.Date);
     }
-    
+
     protected override bool Equal(Session entity, SessionModel model)
     {
         return entity.Id.Equals(model.Id);
     }
-    
+
     protected override void UpdateModel(SessionModel model, Session entity)
     {
         model.Id = entity.Id;

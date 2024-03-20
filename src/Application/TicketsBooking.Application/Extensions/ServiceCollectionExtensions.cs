@@ -9,6 +9,8 @@ public static class ServiceCollectionExtensions
     {
         collection.AddScoped<IVenueService, VenueService>();
         collection.AddScoped<IHallService, HallService>();
+        collection.AddScoped<IUserService, UserService>();
+        collection.AddScoped<IAuthorizationService, AuthorizationService>();
         return collection;
     }
 }

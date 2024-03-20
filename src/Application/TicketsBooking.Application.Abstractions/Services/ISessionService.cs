@@ -10,6 +10,6 @@ public interface ISessionService
     public void DeleteSession(int sessionId);
 
     public Collection<Session> GetAllSessions(int showId, int venueId, DateTime fromDate, DateTime toDate);
-    
+
     public Session? GetSession(int sessionId);
 }

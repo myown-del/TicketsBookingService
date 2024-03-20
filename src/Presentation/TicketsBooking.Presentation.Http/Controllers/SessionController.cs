@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Collections.ObjectModel;
 using TicketsBooking.Application.Abstractions.Services;
 using TicketsBooking.Application.Models.Entities;
 
@@ -34,5 +33,4 @@ public class SessionController : ControllerBase
         _sessionService.CreateSession(showId, hallId, someDate);
         return new OkResult();
     }
-    
 }
