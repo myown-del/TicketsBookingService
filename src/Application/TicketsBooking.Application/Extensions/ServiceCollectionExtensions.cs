@@ -16,6 +16,7 @@ public static class ServiceCollectionExtensions
         collection.AddScoped<IHallService, HallService>();
         collection.AddScoped<IUserService, UserService>();
         collection.AddScoped<IAuthenticationService, AuthenticationService>();
+        collection.AddScoped<ISeatService, SeatService>();
         return collection;
     }
 }

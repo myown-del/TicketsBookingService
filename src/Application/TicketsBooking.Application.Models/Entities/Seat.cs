@@ -2,11 +2,22 @@
 
 public class Seat
 {
-    public long Id { get; set; }
+    public Seat(int id, int hallId, int venueId, int row, int number)
+    {
+        Id = id;
+        HallId = hallId;
+        VenueId = venueId;
+        Row = row;
+        Number = number;
+    }
 
-    public Hall? Hall { get; set; }
+    public int Id { get; set; }
 
-    public long Number { get; set; }
+    public int HallId { get; set; }
 
-    public long Row { get; set; }
+    public int VenueId { get; set; }
+
+    public int Number { get; set; }
+
+    public int Row { get; set; }
 }
