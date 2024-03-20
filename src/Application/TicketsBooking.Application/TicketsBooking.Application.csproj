@@ -2,12 +2,12 @@
 
     <ItemGroup>
         <ProjectReference Include="..\..\Infrastructure\TicketsBooking.Infrastructure.Persistence\TicketsBooking.Infrastructure.Persistence.csproj" />
-        <ProjectReference Include="..\TicketsBooking.Application.Abstractions\TicketsBooking.Application.Abstractions.csproj"/>
-        <ProjectReference Include="..\TicketsBooking.Application.Contracts\TicketsBooking.Application.Contracts.csproj"/>
+        <ProjectReference Include="..\TicketsBooking.Application.Abstractions\TicketsBooking.Application.Abstractions.csproj" />
+        <ProjectReference Include="..\TicketsBooking.Application.Contracts\TicketsBooking.Application.Contracts.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions"/>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
     </ItemGroup>
 
 
