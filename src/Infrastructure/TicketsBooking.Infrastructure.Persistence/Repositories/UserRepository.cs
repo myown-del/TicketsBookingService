@@ -28,7 +28,17 @@ public class UserRepository : RepositoryBase<User, UserModel>, IUserRepository
         UserModel? user = DbSet.FirstOrDefault(v => v.PhoneNumber == phoneNumber);
         return user != null ? MapTo(user) : null;
     }
-
+    public void ChangeUser(int id, string? name = null, string? email = null, DateTime? birthdayDate = null)
+    {
+        UserModel? user = DbSet.FirstOrDefault(v => v.Id == id);
+        if (user != null) DbSet.Remove(user);
+        if (name != null) user!.Name = name;
+        if (email != null) user!.Email = email;
+        if (birthdayDate != null) user!.BirthdayDate = birthdayDate;
+        if (user != null) DbSet.Add(user);
+        _context.SaveChanges();
+    }
+    
     protected override UserModel MapFrom(User entity)
     {
         return new UserModel(

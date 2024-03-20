@@ -9,4 +9,10 @@ public interface IUserRepository
     public void Add(User user);
 
     public User? GetByPhoneNumber(string phoneNumber);
+
+    public void ChangeUser(
+        int id,
+        string? name = null,
+        string? email = null,
+        DateTime? birthdayDate = null);
 }
