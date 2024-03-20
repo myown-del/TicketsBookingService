@@ -31,9 +31,9 @@ public class ShowController : ControllerBase
     }
 
     [HttpGet("")]
-    public ActionResult<Collection<Show>> GetAllShows(int venueId, string showType)
+    public ActionResult<Collection<Show>> GetAllShows(ShowType showType)
     {
-        Collection<Show> shows = _showService.GetAllShows(venueId, showType);
+        Collection<Show> shows = _showService.GetAllShows(showType);
         return shows;
     }
 }

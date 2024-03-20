@@ -9,5 +9,5 @@ public interface IShowService
 
     public void DeleteShow(int showId);
 
-    public Collection<Show> GetAllShows(int venueId, string showType);
+    public Collection<Show> GetAllShows(ShowType showType);
 }

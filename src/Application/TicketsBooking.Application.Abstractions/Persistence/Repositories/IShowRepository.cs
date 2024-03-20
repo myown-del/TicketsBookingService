@@ -5,9 +5,9 @@ namespace TicketsBooking.Application.Abstractions.Persistence.Repositories;
 
 public interface IShowRepository
 {
-    public void CreateShow(string? title, string? genre, string? director, string? duration, ShowType type);
+    public void CreateShow(Show show);
 
     public void DeleteShow(int showId);
 
-    public Collection<Show> GetAllShows(int venueId, string showType);
+    public Collection<Show> GetAllShows(ShowType showType);
 }
