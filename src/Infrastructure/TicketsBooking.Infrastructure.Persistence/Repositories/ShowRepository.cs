@@ -37,14 +37,14 @@ public class ShowRepository : RepositoryBase<Show, ShowModel>, IShowRepository
         IEnumerable<ShowModel> shows = DbSet.ToList().Where(x => x.Type == showType);
         return new Collection<Show>(shows.Select(MapTo).ToList());
     }
-    
+
     protected override DbSet<ShowModel> DbSet => _context.Shows;
-    
+
     protected Show MapTo(ShowModel model)
     {
         return new Show(model.Id, model.Title, model.Genre, model.Director, model.Duration, model.Type);
     }
-    
+
     protected override ShowModel MapFrom(Show entity)
     {
         return new ShowModel(entity.Id, entity.Title, entity.Genre, entity.Director, entity.Duration, entity.Type);

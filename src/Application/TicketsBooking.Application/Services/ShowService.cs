@@ -23,7 +23,7 @@ public class ShowService : IShowService
     {
         _showRepository.DeleteShow(showId);
     }
-    
+
     public Collection<Show> GetAllShows(ShowType showType)
     {
         return _showRepository.GetAllShows(showType);
