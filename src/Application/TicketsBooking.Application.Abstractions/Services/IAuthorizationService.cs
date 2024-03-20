@@ -4,7 +4,7 @@ namespace TicketsBooking.Application.Abstractions.Services;
 
 public interface IAuthorizationService
 {
-    public JwtTokenDto RegisterUser(string phoneNumber, string password, string? name = null, string? email = null, DateTime? birthdayDate = null);
+    public JwtTokenDto RegisterUser(UserRegister userRegister);
 
     public JwtTokenDto AuthorizeUser(string phoneNumber, string password);
 

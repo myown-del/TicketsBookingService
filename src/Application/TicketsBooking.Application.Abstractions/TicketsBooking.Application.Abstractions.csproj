@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <ItemGroup>
-        <ProjectReference Include="..\TicketsBooking.Application.Models\TicketsBooking.Application.Models.csproj"/>
+        <ProjectReference Include="..\TicketsBooking.Application.Models\TicketsBooking.Application.Models.csproj" />
     </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="Newtonsoft.Json" />
-        <PackageReference Include="SourceKit.Generators.Builder"/>
+        <PackageReference Include="SourceKit.Generators.Builder" />
     </ItemGroup>
 
 
