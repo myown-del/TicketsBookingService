@@ -27,7 +27,7 @@ public class SessionService : ISessionService
 
     public Session? GetSession(int sessionId)
     {
-        _sessionRepository.GetById(sessionId);
+        return _sessionRepository.GetById(sessionId);
     }
 
     public Collection<Session> GetAllSessions(int showId, int venueId, DateTime fromDate, DateTime toDate)

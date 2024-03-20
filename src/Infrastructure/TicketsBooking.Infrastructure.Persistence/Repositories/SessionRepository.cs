@@ -11,9 +11,12 @@ public class SessionRepository : RepositoryBase<Session, SessionModel>, ISession
 {
     private readonly ApplicationDbContext _context;
 
+    protected DbSet<HallModel> DbHallSet { get; }
+
     public SessionRepository(ApplicationDbContext context) : base(context)
     {
         _context = context;
+        DbHallSet = context.Halls;
     }
 
     public Session? GetById(int sessionId)
@@ -38,11 +41,12 @@ public class SessionRepository : RepositoryBase<Session, SessionModel>, ISession
 
     public Collection<Session> GetAllByParametrs(int showId, int venueId, DateTime fromDate, DateTime toDate)
     {
-        IEnumerable<HallModel> halls = DbSet.ToList().Where(x => x.venueId == venueId);
-        var sessions = new IEnumerable<SessionModel>();
+        IEnumerable<HallModel> halls = DbHallSet.ToList().Where(x => x.VenueId == venueId);
+        var sessionList = new List<SessionModel>();
+        IEnumerable<SessionModel> sessions = sessionList;
         foreach (HallModel hall in halls)
         {
-            sessions.Append(DbSet.Where(x => x.ShowId == showId && x.HallId == hall.Id && x.ShowId == showId && x.Date < toDate && x.Date < fromDate));
+            sessions = sessions.Concat(DbSet.Where(x => x.ShowId == showId && x.HallId == hall.Id && x.Date < toDate && x.Date > fromDate));
         }
 
         return new Collection<Session>(sessions.Select(MapTo).ToList());
