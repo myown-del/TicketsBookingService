@@ -23,7 +23,7 @@ public class SeatController : ControllerBase
     }
 
     [HttpDelete("{venueId}/halls/{hallId}/seats/{seatId}")]
-    public ActionResult DeleteHall([FromRoute] int venueId, [FromRoute] int hallId, [FromRoute] int seatId)
+    public ActionResult DeleteSeat([FromRoute] int venueId, [FromRoute] int hallId, [FromRoute] int seatId)
     {
         Seat? seat = _seatService.GetSeat(venueId, hallId, seatId);
 
@@ -35,7 +35,7 @@ public class SeatController : ControllerBase
     }
 
     [HttpPost("{venueId}/halls/{hallId}/seats")]
-    public ActionResult CreateHall(
+    public ActionResult CreateSeat(
         [FromRoute] int venueId,
         [FromRoute] int hallId,
         [FromBody] Seat seat)
