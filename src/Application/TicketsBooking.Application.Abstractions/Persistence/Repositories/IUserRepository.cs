@@ -10,6 +10,8 @@ public interface IUserRepository
 
     public User? GetByPhoneNumber(string phoneNumber);
 
+    public User? GetByRefreshToken(string refreshToken);
+
     public void ChangeUser(
         int id,
         string? name = null,

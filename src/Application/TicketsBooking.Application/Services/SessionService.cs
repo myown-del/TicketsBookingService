@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using TicketsBooking.Application.Abstractions.Persistence.Repositories;
 using TicketsBooking.Application.Abstractions.Services;
 using TicketsBooking.Application.Models.Entities;

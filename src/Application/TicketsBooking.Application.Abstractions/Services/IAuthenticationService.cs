@@ -8,5 +8,5 @@ public interface IAuthenticationService
 
     public JwtTokenDto AuthorizeUser(UserCredentialsDto userCredentials);
 
-    public JwtTokenDto RefreshToken(string accessToken, string refreshToken);
+    public JwtTokenDto RefreshAccessToken(string refreshToken);
 }

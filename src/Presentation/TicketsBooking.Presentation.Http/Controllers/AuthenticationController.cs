@@ -12,8 +12,15 @@ public class AuthenticationController(IAuthenticationService authService)
     [HttpPost("register")]
     public ActionResult<JwtTokenDto> RegisterUser([FromBody] UserCredentialsDto userCredentials)
     {
-        JwtTokenDto jwtTokenDto = authService.RegisterUser(userCredentials);
-        return jwtTokenDto;
+        try
+        {
+            JwtTokenDto jwtTokenDto = authService.RegisterUser(userCredentials);
+            return jwtTokenDto;
+        }
+        catch (Exception)
+        {
+            return new BadRequestResult();
+        }
     }
 
     [HttpPost("login")]
@@ -26,15 +33,26 @@ public class AuthenticationController(IAuthenticationService authService)
         }
         catch (Exception e)
         {
-            switch (e)
+            return e switch
             {
-                case WrongPasswordException:
-                    return new ForbidResult();
-                case UserNotFoundException:
-                    return new NotFoundResult();
-            }
+                WrongPasswordException => new ForbidResult(),
+                UserNotFoundException => new NotFoundResult(),
+                _ => new BadRequestResult()
+            };
         }
-
-        return new BadRequestResult();
+    }
+    
+    [HttpPost("refresh-token")]
+    public ActionResult<JwtTokenDto> RefreshAccessToken([FromBody] RefreshTokenDto refreshToken)
+    {
+        try
+        {
+            JwtTokenDto jwtTokenDto = authService.RefreshAccessToken(refreshToken.RefreshToken);
+            return jwtTokenDto;
+        }
+        catch (Exception)
+        {
+            return new BadRequestResult();
+        }
     }
 }

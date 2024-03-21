@@ -54,8 +54,17 @@ public class AuthenticationService : IAuthenticationService
         return jwtToken;
     }
 
-    public JwtTokenDto RefreshToken(string accessToken, string refreshToken)
+    public JwtTokenDto RefreshAccessToken(string refreshToken)
     {
-        throw new NotImplementedException();
+        User? user = _userRepository.GetByRefreshToken(refreshToken);
+        if (user is null)
+        {
+            throw new UserNotFoundException();
+        }
+
+        var jwtToken = AuthenticationHelper.GenerateJwtToken(
+            phoneNumber: user.PhoneNumber,
+            refreshToken: user.RefreshToken);
+        return jwtToken;
     }
 }
