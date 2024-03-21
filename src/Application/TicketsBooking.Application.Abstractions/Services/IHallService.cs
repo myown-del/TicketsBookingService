@@ -7,9 +7,9 @@ public interface IHallService
 {
     public void CreateHall(Hall hall);
 
-    public void DeleteHall(long hallId, long venueId);
+    public void DeleteHall(long hallId);
 
     public Collection<Hall> GetAllHalls(long venueId);
 
-    public Hall? GetHall(long venueId, long hallId);
+    public Hall? GetHall(long hallId);
 }

@@ -7,9 +7,9 @@ public interface IHallRepository
 {
     public Collection<Hall> GetAll(long venueId);
 
-    public Hall? GetHall(long venueId, long hallId);
+    public Hall? GetHall(long hallId);
 
     public void Add(Hall hall);
 
-    public void Remove(long venueId, long hallId);
+    public void Remove(long hallId);
 }

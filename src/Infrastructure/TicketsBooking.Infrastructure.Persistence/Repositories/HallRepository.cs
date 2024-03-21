@@ -24,9 +24,9 @@ public class HallRepository : RepositoryBase<Hall, HallModel>, IHallRepository
         return new Collection<Hall>(halls.Select(MapTo).ToList());
     }
 
-    public Hall? GetHall(long venueId, long hallId)
+    public Hall? GetHall(long hallId)
     {
-        HallModel? hall = DbSet.FirstOrDefault(x => x.Id == hallId && x.VenueId == venueId);
+        HallModel? hall = DbSet.FirstOrDefault(x => x.Id == hallId);
 
         if (hall is null)
             return null;
@@ -34,9 +34,9 @@ public class HallRepository : RepositoryBase<Hall, HallModel>, IHallRepository
         return MapTo(hall);
     }
 
-    public void Remove(long venueId, long hallId)
+    public void Remove(long hallId)
     {
-        HallModel? hall = DbSet.FirstOrDefault(x => x.Id == hallId && x.VenueId == venueId);
+        HallModel? hall = DbSet.FirstOrDefault(x => x.Id == hallId);
 
         if (hall is not null)
         {

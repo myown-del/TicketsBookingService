@@ -22,10 +22,10 @@ public class HallController : ControllerBase
         return _hallService.GetAllHalls(venueId);
     }
 
-    [HttpGet("{venueId}/halls/{hallId}")]
-    public ActionResult<Hall> GetHall([FromRoute] long venueId, [FromRoute] long hallId)
+    [HttpGet("/halls/{hallId}")]
+    public ActionResult<Hall> GetHall([FromRoute] long hallId)
     {
-        Hall? hall = _hallService.GetHall(venueId, hallId);
+        Hall? hall = _hallService.GetHall(hallId);
 
         if (hall is null)
             return new NotFoundResult();
@@ -33,15 +33,15 @@ public class HallController : ControllerBase
         return hall;
     }
 
-    [HttpDelete("{venueId}/halls/{hallId}")]
-    public ActionResult DeleteHall(int venueId, int hallId)
+    [HttpDelete("/halls/{hallId}")]
+    public ActionResult DeleteHall(int hallId)
     {
-        Hall? hall = _hallService.GetHall(venueId, hallId);
+        Hall? hall = _hallService.GetHall(hallId);
 
         if (hall is null)
             return new NotFoundResult();
 
-        _hallService.DeleteHall(hallId, venueId);
+        _hallService.DeleteHall(hallId);
         return new OkResult();
     }
 

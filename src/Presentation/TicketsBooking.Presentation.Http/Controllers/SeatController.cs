@@ -16,21 +16,21 @@ public class SeatController : ControllerBase
         _seatService = seatService;
     }
 
-    [HttpGet("{venueId}/halls/{hallId}/seats")]
-    public ActionResult<Collection<Seat>> GetSeats([FromRoute] int venueId, [FromRoute] int hallId)
+    [HttpGet("/halls/{hallId}/seats")]
+    public ActionResult<Collection<Seat>> GetSeats([FromRoute] int hallId)
     {
-        return _seatService.GetAllSeats(venueId, hallId);
+        return _seatService.GetAllSeats( hallId);
     }
 
-    [HttpDelete("{venueId}/halls/{hallId}/seats/{seatId}")]
-    public ActionResult DeleteSeat([FromRoute] int venueId, [FromRoute] int hallId, [FromRoute] int seatId)
+    [HttpDelete("/halls/seats/{seatId}")]
+    public ActionResult DeleteSeat([FromRoute] int seatId)
     {
-        Seat? seat = _seatService.GetSeat(venueId, hallId, seatId);
+        Seat? seat = _seatService.GetSeat(seatId);
 
         if (seat is null)
             return new NotFoundResult();
 
-        _seatService.DeleteSeat(venueId, hallId, seatId);
+        _seatService.DeleteSeat(seatId);
         return new OkResult();
     }
 

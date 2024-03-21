@@ -36,15 +36,15 @@ public class SeatRepository : RepositoryBase<Seat, SeatModel>, ISeatRepository
         model.Number = entity.Number;
     }
 
-    public Collection<Seat> GetAll(int venueId, int hallId)
+    public Collection<Seat> GetAll(int hallId)
     {
-        IEnumerable<SeatModel> seats = DbSet.ToList().Where(x => x.VenueId == venueId && x.HallId == hallId);
+        IEnumerable<SeatModel> seats = DbSet.ToList().Where(x => x.HallId == hallId);
         return new Collection<Seat>(seats.Select(MapTo).ToList());
     }
 
-    public Seat? GetSeat(int venueId, int hallId, int seatId)
+    public Seat? GetSeat( int seatId)
     {
-        SeatModel? seat = DbSet.FirstOrDefault(x => x.Id == hallId && x.VenueId == venueId && x.Id == seatId);
+        SeatModel? seat = DbSet.FirstOrDefault(x => x.Id == seatId);
 
         if (seat is null)
             return null;
@@ -52,9 +52,9 @@ public class SeatRepository : RepositoryBase<Seat, SeatModel>, ISeatRepository
         return MapTo(seat);
     }
 
-    public void Remove(int venueId, int hallId, int seatId)
+    public void Remove(int seatId)
     {
-        SeatModel? seat = DbSet.FirstOrDefault(x => x.Id == hallId && x.VenueId == venueId && x.Id == seatId);
+        SeatModel? seat = DbSet.FirstOrDefault(x => x.Id == seatId);
 
         if (seat is not null)
         {
