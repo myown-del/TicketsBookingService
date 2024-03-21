@@ -20,7 +20,7 @@ public class SeatRepository : RepositoryBase<Seat, SeatModel>, ISeatRepository
 
     protected override SeatModel MapFrom(Seat entity)
     {
-        return new SeatModel(entity.Id, entity.HallId, entity.VenueId, entity.Row, entity.Number);
+        return new SeatModel(entity.Id, entity.HallId, entity.Row, entity.Number);
     }
 
     protected override bool Equal(Seat entity, SeatModel model)
@@ -65,6 +65,6 @@ public class SeatRepository : RepositoryBase<Seat, SeatModel>, ISeatRepository
 
     protected Seat MapTo(SeatModel model)
     {
-        return new Seat(model.Id, model.HallId, model.VenueId, model.Row, model.Number);
+        return new Seat(model.Id, model.HallId, model.Row, model.Number);
     }
 }

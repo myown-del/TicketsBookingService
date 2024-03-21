@@ -2,11 +2,10 @@
 
 public class Seat
 {
-    public Seat(int id, int hallId, int venueId, int row, int number)
+    public Seat(int id, int hallId, int row, int number)
     {
         Id = id;
         HallId = hallId;
-        VenueId = venueId;
         Row = row;
         Number = number;
     }
@@ -14,8 +13,6 @@ public class Seat
     public int Id { get; set; }
 
     public int HallId { get; set; }
-
-    public int VenueId { get; set; }
 
     public int Number { get; set; }
 

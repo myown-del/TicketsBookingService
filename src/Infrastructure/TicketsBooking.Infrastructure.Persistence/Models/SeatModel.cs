@@ -4,11 +4,10 @@ namespace TicketsBooking.Infrastructure.Persistence.Models;
 
 public class SeatModel
 {
-    public SeatModel(int id, int hallId, int venueId, int row, int number)
+    public SeatModel(int id, int hallId, int row, int number)
     {
         Id = id;
         HallId = hallId;
-        VenueId = venueId;
         Row = row;
         Number = number;
     }
@@ -19,9 +18,6 @@ public class SeatModel
     [Column("hall_id")]
     public int HallId { get; set; }
     
-    [Column("venue_id")]
-    public int VenueId { get; set; }
-
     [Column("row")]
     public int Row { get; set; }
     
