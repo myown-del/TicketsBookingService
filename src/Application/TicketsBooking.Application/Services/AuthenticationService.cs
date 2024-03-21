@@ -19,7 +19,7 @@ public class AuthenticationService : IAuthenticationService
     public JwtTokenDto RegisterUser(UserCredentialsDto userCredentials)
     {
         string passwordHash = AuthenticationHelper.CalculatePasswordHash(userCredentials.Password);
-        var jwtToken = AuthenticationHelper.GenerateJwtToken(userCredentials.PhoneNumber);
+        JwtTokenDto jwtToken = AuthenticationHelper.GenerateJwtToken(userCredentials.PhoneNumber);
 
         var user = new User(
             phoneNumber: userCredentials.PhoneNumber,
@@ -48,7 +48,7 @@ public class AuthenticationService : IAuthenticationService
             throw new WrongPasswordException();
         }
 
-        var jwtToken = AuthenticationHelper.GenerateJwtToken(
+        JwtTokenDto jwtToken = AuthenticationHelper.GenerateJwtToken(
             phoneNumber: userCredentials.PhoneNumber,
             refreshToken: user.RefreshToken);
         return jwtToken;

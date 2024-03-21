@@ -18,6 +18,8 @@ public class ApplicationDbContext : DbContext
     public DbSet<UserModel> Users { get; protected init; } = null!;
 
     public DbSet<SessionModel> Sessions { get; protected init; } = null!;
+    
+    public DbSet<SeatModel> Seats { get; protected init; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -27,6 +29,7 @@ public class ApplicationDbContext : DbContext
         modelBuilder.Entity<ShowModel>().ToTable("shows", t => t.ExcludeFromMigrations());
         modelBuilder.Entity<UserModel>().ToTable("users", t => t.ExcludeFromMigrations());
         modelBuilder.Entity<SessionModel>().ToTable("sessions", t => t.ExcludeFromMigrations());
+        modelBuilder.Entity<SeatModel>().ToTable("seats", t => t.ExcludeFromMigrations());
         base.OnModelCreating(modelBuilder);
     }
 }

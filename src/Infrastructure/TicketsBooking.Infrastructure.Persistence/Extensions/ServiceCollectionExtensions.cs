@@ -25,6 +25,7 @@ public static class ServiceCollectionExtensions
         collection.AddScoped<IVenueRepository, VenueRepository>();
         collection.AddScoped<IHallRepository, HallRepository>();
         collection.AddScoped<IUserRepository, UserRepository>();
+        collection.AddScoped<ISeatRepository, SeatRepository>();
 
         // collection.AddScoped<IShowRepository, ShowRepository>();
         return collection;
