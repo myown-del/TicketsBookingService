@@ -19,9 +19,9 @@ public class HallService : IHallService
         _hallRepository.Add(hall);
     }
 
-    public void DeleteHall(long hallId, long venueId)
+    public void DeleteHall(long hallId)
     {
-        _hallRepository.Remove(venueId, hallId);
+        _hallRepository.Remove(hallId);
     }
 
     public Collection<Hall> GetAllHalls(long venueId)
@@ -29,8 +29,8 @@ public class HallService : IHallService
         return _hallRepository.GetAll(venueId);
     }
 
-    public Hall? GetHall(long venueId, long hallId)
+    public Hall? GetHall(long hallId)
     {
-        return _hallRepository.GetHall(venueId, hallId);
+        return _hallRepository.GetHall(hallId);
     }
 }

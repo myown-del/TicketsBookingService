@@ -14,9 +14,9 @@ public class SeatService : ISeatService
         _seatRepository = seatRepository;
     }
 
-    public void DeleteSeat(int venueId, int hallId, int seatId)
+    public void DeleteSeat(int seatId)
     {
-        _seatRepository.Remove(venueId, hallId, seatId);
+        _seatRepository.Remove(seatId);
     }
 
     public void CreateSeat(Seat seat)
@@ -24,13 +24,13 @@ public class SeatService : ISeatService
         _seatRepository.Add(seat);
     }
 
-    public Seat? GetSeat(int venueId, int hallId, int seatId)
+    public Seat? GetSeat(int seatId)
     {
-        return _seatRepository.GetSeat(venueId, hallId, seatId);
+        return _seatRepository.GetSeat(seatId);
     }
     
-    public Collection<Seat> GetAllSeats(int venueId, int hallId)
+    public Collection<Seat> GetAllSeats(int hallId)
     {
-        return _seatRepository.GetAll(venueId, hallId);
+        return _seatRepository.GetAll(hallId);
     }
 }
