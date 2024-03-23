@@ -19,8 +19,9 @@ public class VenueService : IVenueService
         return _venueRepository.GetById(venueId);
     }
 
-    public void CreateVenue(Venue venue)
+    public void CreateVenue(long id, string name, string address, VenueType type, string city)
     {
+        var venue = new Venue(id: id, name: name, address: address, type: type, city: city);
         _venueRepository.Add(venue);
     }
 

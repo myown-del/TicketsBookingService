@@ -5,7 +5,7 @@ namespace TicketsBooking.Application.Abstractions.Services;
 
 public interface IVenueService
 {
-    public void CreateVenue(Venue venue);
+    public void CreateVenue(long id, string name, string address, VenueType type, string city);
 
     public void DeleteVenue(int venueId);
 

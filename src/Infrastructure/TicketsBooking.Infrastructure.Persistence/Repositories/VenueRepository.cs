@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using TicketsBooking.Application.Abstractions.Persistence.Repositories;
 using TicketsBooking.Application.Models.Entities;
 using TicketsBooking.Infrastructure.Persistence.Contexts;
+using TicketsBooking.Infrastructure.Persistence.Exceptions;
 using TicketsBooking.Infrastructure.Persistence.Models;
 
 namespace TicketsBooking.Infrastructure.Persistence.Repositories;
@@ -27,11 +28,10 @@ public class VenueRepository : RepositoryBase<Venue, VenueModel>, IVenueReposito
     public void RemoveById(int id)
     {
         VenueModel? venue = DbSet.FirstOrDefault(v => v.Id == id);
-        if (venue != null)
-        {
-            DbSet.Remove(venue);
-            _context.SaveChanges();
-        }
+        if (venue is null) throw new NotFoundException();
+        
+        DbSet.Remove(venue);
+        _context.SaveChanges();
     }
 
     public Collection<Venue> GetAll(VenueType? type = null)

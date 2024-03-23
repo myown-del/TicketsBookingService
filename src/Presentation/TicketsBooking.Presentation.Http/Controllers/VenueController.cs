@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Collections.ObjectModel;
 using TicketsBooking.Application.Abstractions.Services;
 using TicketsBooking.Application.Models.Entities;
+using TicketsBooking.Infrastructure.Persistence.Exceptions;
+using TicketsBooking.Presentation.Http.Models.Venues;
 
 namespace TicketsBooking.Presentation.Http.Controllers;
 
@@ -10,30 +11,65 @@ namespace TicketsBooking.Presentation.Http.Controllers;
 public class VenueController(IVenueService venueService)
 {
     [HttpGet("")]
-    public ActionResult<Collection<Venue>> GetVenues(VenueType? type = null)
+    public IEnumerable<VenueDto> GetVenues(VenueType? type = null)
     {
-        Collection<Venue> venues = venueService.GetAllVenues(type);
-        return venues;
+        IEnumerable<Venue> venues = venueService.GetAllVenues(type);
+        var response = new List<VenueDto>();
+        foreach (var venue in venues)
+        {
+            response.Add(new VenueDto(
+                id: venue.Id,
+                name: venue.Name,
+                address: venue.Address,
+                type: venue.Type,
+                city: venue.City));
+        }
+        return response;
     }
 
     [HttpGet("{id}", Name = nameof(GetVenue))]
-    public ActionResult<Venue?> GetVenue(int id)
+    public ActionResult<VenueDto?> GetVenue(int id)
     {
         Venue? venue = venueService.GetVenue(id);
-        return venue;
+        if (venue is null)
+            return new NotFoundResult();
+        
+        var response = new VenueDto(
+            id: venue.Id,
+            name: venue.Name,
+            address: venue.Address,
+            type: venue.Type,
+            city: venue.City);
+        return response;
     }
 
     [HttpPost("")]
-    public ActionResult CreateVenue([FromBody] Venue venue)
+    public ActionResult CreateVenue([FromBody] VenueDto venue)
     {
-        venueService.CreateVenue(venue);
+        venueService.CreateVenue(
+            id: venue.Id,
+            name: venue.Name,
+            address: venue.Address,
+            type: Enum.Parse<VenueType>(venue.Type, ignoreCase: true),
+            city: venue.City);
         return new OkResult();
     }
 
     [HttpDelete("{id}")]
     public ActionResult DeleteVenue(int id)
     {
-        venueService.DeleteVenue(id);
+        try
+        {
+            venueService.DeleteVenue(id);
+        }
+        catch (Exception e)
+        {
+            if (e is NotFoundException)
+            {
+                return new NotFoundResult();
+            }
+            return new BadRequestResult();
+        }
         return new OkResult();
     }
 }
