@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using TicketsBooking.Application.Models.Entities;
 
 namespace TicketsBooking.Infrastructure.Persistence.Models;
 
@@ -19,4 +20,11 @@ public class HallModel
 
     [Column("venue_id")]
     public long VenueId { get; set; }
+    
+    public VenueModel? Venue { get; set; }
+
+    public Hall MapTo()
+    {
+        return new Hall(id: Id, venue: Venue!.MapTo(), Name);
+    }
 }

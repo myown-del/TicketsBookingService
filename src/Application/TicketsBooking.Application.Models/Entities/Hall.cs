@@ -2,16 +2,16 @@
 
 public class Hall
 {
-    public Hall(long id, long venueId, string name)
+    public Hall(long id, Venue venue, string name)
     {
         Id = id;
-        VenueId = venueId;
+        Venue = venue;
         Name = name;
     }
 
     public long Id { get; set; }
 
-    public long VenueId { get; set; }
+    public Venue Venue { get; set; }
 
     public string Name { get; set; }
 }

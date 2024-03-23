@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using TicketsBooking.Application.Models.Entities;
 
 namespace TicketsBooking.Infrastructure.Persistence.Models;
 
@@ -31,4 +32,10 @@ public class VenueModel
     [Column("city")]
 
     public string City { get; set; }
+
+    public Venue MapTo()
+    {
+        var type = (VenueType)Enum.Parse(typeof(VenueType), Type, true);
+        return new Venue(Id, Name, Address, type, City);
+    }
 }

@@ -20,7 +20,7 @@ public class HallRepository : RepositoryBase<Hall, HallModel>, IHallRepository
 
     public Collection<Hall> GetAll(long venueId)
     {
-        IEnumerable<HallModel> halls = DbSet.ToList().Where(x => x.VenueId == venueId);
+        IEnumerable<HallModel> halls = _context.Halls.Include(venue => venue.Venue).ToList();
         return new Collection<Hall>(halls.Select(MapTo).ToList());
     }
 
@@ -47,7 +47,7 @@ public class HallRepository : RepositoryBase<Hall, HallModel>, IHallRepository
 
     protected override HallModel MapFrom(Hall entity)
     {
-        return new HallModel(entity.Id, entity.Name, entity.VenueId);
+        return new HallModel(entity.Id, entity.Name, entity.Venue.Id);
     }
 
     protected override bool Equal(Hall entity, HallModel model)
@@ -58,12 +58,12 @@ public class HallRepository : RepositoryBase<Hall, HallModel>, IHallRepository
     protected override void UpdateModel(HallModel model, Hall entity)
     {
         model.Id = entity.Id;
-        model.VenueId = entity.VenueId;
+        model.VenueId = entity.Venue!.Id;
         model.Name = entity.Name;
     }
 
     protected Hall MapTo(HallModel model)
     {
-        return new Hall(model.Id, model.VenueId, model.Name);
+        return new Hall(model.Id, model.Venue!.MapTo(), model.Name);
     }
 }
