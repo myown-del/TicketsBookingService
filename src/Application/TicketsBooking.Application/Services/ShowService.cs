@@ -14,8 +14,9 @@ public class ShowService : IShowService
         _showRepository = showRepository;
     }
 
-    public void CreateShow(Show show)
+    public void CreateShow(int id, string? title, string? genre, string? director, string? duration, ShowType type)
     {
+        var show = new Show(id, title, genre, director, duration, type);
         _showRepository.CreateShow(show);
     }
 

@@ -5,7 +5,7 @@ namespace TicketsBooking.Application.Abstractions.Services;
 
 public interface IShowService
 {
-    public void CreateShow(Show show);
+    public void CreateShow(int id, string? title, string? genre, string? director, string? duration, ShowType type);
 
     public void DeleteShow(int showId);
 
