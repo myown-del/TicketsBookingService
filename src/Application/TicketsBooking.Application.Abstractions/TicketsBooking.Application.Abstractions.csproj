@@ -5,8 +5,9 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Newtonsoft.Json" />
+        <PackageReference Include="Newtonsoft.Json"/>
         <PackageReference Include="SourceKit.Generators.Builder"/>
     </ItemGroup>
+
 
 </Project>

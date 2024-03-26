@@ -3,13 +3,13 @@
     <ItemGroup>
         <ProjectReference Include="..\Application\TicketsBooking.Application\TicketsBooking.Application.csproj"/>
         <ProjectReference Include="..\Infrastructure\TicketsBooking.Infrastructure.Persistence\TicketsBooking.Infrastructure.Persistence.csproj"/>
-        <ProjectReference Include="..\Presentation\TicketsBooking.Presentation.Http\TicketsBooking.Presentation.Http.csproj" />
+        <ProjectReference Include="..\Presentation\TicketsBooking.Presentation.Http\TicketsBooking.Presentation.Http.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="Itmo.Dev.Platform.Logging"/>
-        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" />
-        <PackageReference Include="Swashbuckle.AspNetCore" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson"/>
+        <PackageReference Include="Swashbuckle.AspNetCore"/>
     </ItemGroup>
 
     <ItemGroup>

@@ -4,8 +4,12 @@
         <OutputType>Library</OutputType>
     </PropertyGroup>
 
+
     <ItemGroup>
-        <Folder Include="Controllers\"/>
+        <ProjectReference Include="..\..\Application\TicketsBooking.Application.Abstractions\TicketsBooking.Application.Abstractions.csproj" />
+        <ProjectReference Include="..\..\Application\TicketsBooking.Application\TicketsBooking.Application.csproj" />
     </ItemGroup>
+
+
 
 </Project>
