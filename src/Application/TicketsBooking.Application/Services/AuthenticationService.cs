@@ -62,7 +62,7 @@ public class AuthenticationService : IAuthenticationService
             throw new UserNotFoundException();
         }
 
-        var jwtToken = AuthenticationHelper.GenerateJwtToken(
+        JwtTokenDto jwtToken = AuthenticationHelper.GenerateJwtToken(
             phoneNumber: user.PhoneNumber,
             refreshToken: user.RefreshToken);
         return jwtToken;

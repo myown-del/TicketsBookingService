@@ -14,8 +14,9 @@ public class SessionService : ISessionService
         _sessionRepository = sessionRepository;
     }
 
-    public void CreateSession(Session session)
+    public void CreateSession(long id, long showId, long hallId, DateTime sessionDate)
     {
+        var session = new Session(id: id, showId: showId, hallId: hallId, date: sessionDate);
         _sessionRepository.Add(session);
     }
 

@@ -15,7 +15,7 @@ public class VenueController(IVenueService venueService)
     {
         IEnumerable<Venue> venues = venueService.GetAllVenues(type);
         var response = new List<VenueDto>();
-        foreach (var venue in venues)
+        foreach (Venue venue in venues)
         {
             response.Add(new VenueDto(
                 id: venue.Id,

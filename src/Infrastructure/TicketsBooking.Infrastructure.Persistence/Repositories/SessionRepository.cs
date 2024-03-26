@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using TicketsBooking.Application.Abstractions.Persistence.Repositories;
 using TicketsBooking.Application.Models.Entities;
+using TicketsBooking.Infrastructure.Persistence.Exceptions;
 using TicketsBooking.Infrastructure.Persistence.Contexts;
 using TicketsBooking.Infrastructure.Persistence.Models;
 
@@ -32,11 +33,10 @@ public class SessionRepository : RepositoryBase<Session, SessionModel>, ISession
     public void RemoveById(int sessionId)
     {
         SessionModel? session = DbSet.FirstOrDefault(v => v.Id == sessionId);
-        if (session != null)
-        {
-            DbSet.Remove(session);
-            _context.SaveChanges();
-        }
+        if (session is null) throw new NotFoundException();
+
+        DbSet.Remove(session);
+        _context.SaveChanges();
     }
 
     public Collection<Session> GetAllByParametrs(int showId, int venueId, DateTime fromDate, DateTime toDate)

@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Collections.ObjectModel;
 using TicketsBooking.Application.Abstractions.Services;
 using TicketsBooking.Application.Models.Entities;
 using TicketsBooking.Infrastructure.Persistence.Exceptions;
@@ -41,7 +40,7 @@ public class ShowController(IShowService showService)
     {
         IEnumerable<Show> shows = showService.GetAllShows(showType);
         var response = new List<ShowDto>();
-        foreach (var show in shows)
+        foreach (Show show in shows)
         {
             response.Add(new ShowDto(show.Id, show.Title, show.Genre, show.Director, show.Duration, show.Type));
         }

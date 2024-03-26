@@ -17,4 +17,5 @@ public class Session
     public long HallId { get; set; }
 
     public DateTime Date { get; set; }
+    
 }

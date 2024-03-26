@@ -5,7 +5,7 @@ namespace TicketsBooking.Application.Abstractions.Services;
 
 public interface ISessionService
 {
-    public void CreateSession(Session session);
+    public void CreateSession(long id, long showId, long hallId, DateTime sessionDate);
 
     public void DeleteSession(int sessionId);
 
