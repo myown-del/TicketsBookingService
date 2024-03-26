@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-﻿namespace TicketsBooking.Presentation.Http.Models.Sessions;
+namespace TicketsBooking.Presentation.Http.Models.Sessions;
     public class SessionDto
     {
         public SessionDto(long id, long showId, long hallId, DateTime sessionDate)
@@ -19,11 +18,3 @@
         public DateTime Date { get; set; }
     }
 
-
-=======
-﻿// unset
-
-namespace TicketsBooking.Presentation.Http.Models.Sessions;
-
-public class SessionDto { }
->>>>>>> 5a65501e39f3da9ff81d267d600282168fd4ca06
