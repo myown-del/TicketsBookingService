@@ -14,9 +14,9 @@ public class HallService : IHallService
         _hallRepository = hallRepository;
     }
 
-    public void CreateHall(Hall hall)
+    public Hall CreateHall(string name, long venueId)
     {
-        _hallRepository.Add(hall);
+        return _hallRepository.Add(name, venueId);
     }
 
     public void DeleteHall(long hallId)

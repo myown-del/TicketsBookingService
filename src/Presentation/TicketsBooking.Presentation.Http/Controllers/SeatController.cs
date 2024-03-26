@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.ObjectModel;
 using TicketsBooking.Application.Abstractions.Services;
+using TicketsBooking.Application.Models.Dto;
 using TicketsBooking.Application.Models.Entities;
+using TicketsBooking.Presentation.Http.Models.Seats;
 
 namespace TicketsBooking.Presentation.Http.Controllers;
 
@@ -19,7 +21,7 @@ public class SeatController : ControllerBase
     [HttpGet("/halls/{hallId}/seats")]
     public ActionResult<Collection<Seat>> GetSeats([FromRoute] int hallId)
     {
-        return _seatService.GetAllSeats( hallId);
+        return _seatService.GetAllSeats(hallId);
     }
 
     [HttpDelete("/halls/seats/{seatId}")]
@@ -34,13 +36,18 @@ public class SeatController : ControllerBase
         return new OkResult();
     }
 
-    [HttpPost("{venueId}/halls/{hallId}/seats")]
-    public ActionResult CreateSeat(
-        [FromRoute] int venueId,
-        [FromRoute] int hallId,
-        [FromBody] Seat seat)
+    [HttpPost("/halls/{hallId}/seats")]
+    public ActionResult<Seat> CreateSeat([FromRoute] int hallId, [FromBody] CreateSeatModel createSeatModel)
     {
-        _seatService.CreateSeat(seat);
-        return new OkResult();
+        var seatDto = new SeatDto()
+        {
+            HallId = hallId,
+            Row = createSeatModel.Row,
+            Number = createSeatModel.Number,
+        };
+
+        Seat seat = _seatService.CreateSeat(seatDto);
+
+        return seat;
     }
 }
