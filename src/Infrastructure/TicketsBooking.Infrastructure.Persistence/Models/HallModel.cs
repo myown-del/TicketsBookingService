@@ -12,19 +12,21 @@ public class HallModel
         VenueId = venueId;
     }
 
+    public HallModel() { }
+
     [Column("id")]
     public long Id { get; set; }
 
     [Column("name")]
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     [Column("venue_id")]
     public long VenueId { get; set; }
-    
+
     public VenueModel? Venue { get; set; }
 
     public Hall MapTo()
     {
-        return new Hall(id: Id, venue: Venue!.MapTo(), Name);
+        return new Hall(id: Id, venue: Venue!.MapTo(), Name!);
     }
 }

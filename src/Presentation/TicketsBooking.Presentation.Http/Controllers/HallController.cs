@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using TicketsBooking.Application.Abstractions.Services;
 using TicketsBooking.Application.Models.Entities;
+using TicketsBooking.Presentation.Http.Models.Halls;
 
 namespace TicketsBooking.Presentation.Http.Controllers;
 
@@ -34,7 +35,7 @@ public class HallController : ControllerBase
     }
 
     [HttpDelete("/halls/{hallId}")]
-    public ActionResult DeleteHall(int hallId)
+    public ActionResult DeleteHall([FromRoute] int hallId)
     {
         Hall? hall = _hallService.GetHall(hallId);
 
@@ -46,9 +47,11 @@ public class HallController : ControllerBase
     }
 
     [HttpPost("{venueId}/halls")]
-    public ActionResult CreateHall(int venueId, [FromBody] Hall hall)
+    public ActionResult<Hall> CreateHall([FromRoute] int venueId, [FromBody] CreateHallModel createHallModel)
     {
-        _hallService.CreateHall(hall);
-        return new OkResult();
+        
+        Hall hall = _hallService.CreateHall(createHallModel.Name, venueId);
+        
+        return hall;
     }
 }

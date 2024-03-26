@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿namespace TicketsBooking.Presentation.Http.Models.Sessions;
     public class SessionDto
     {
@@ -19,3 +20,10 @@
     }
 
 
+=======
+﻿// unset
+
+namespace TicketsBooking.Presentation.Http.Models.Sessions;
+
+public class SessionDto { }
+>>>>>>> 5a65501e39f3da9ff81d267d600282168fd4ca06

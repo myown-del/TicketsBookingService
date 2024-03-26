@@ -2,17 +2,17 @@
 
 public class Seat
 {
-    public Seat(int id, int hallId, int row, int number)
+    public Seat(long id, Hall hall, int row, int number)
     {
         Id = id;
-        HallId = hallId;
+        Hall = hall;
         Row = row;
         Number = number;
     }
 
-    public int Id { get; set; }
+    public long Id { get; set; }
 
-    public int HallId { get; set; }
+    public Hall? Hall { get; set; }
 
     public int Number { get; set; }
 

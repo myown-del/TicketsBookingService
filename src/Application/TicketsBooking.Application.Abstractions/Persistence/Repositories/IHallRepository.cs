@@ -9,7 +9,7 @@ public interface IHallRepository
 
     public Hall? GetHall(long hallId);
 
-    public void Add(Hall hall);
+    public Hall Add(string name, long venueId);
 
     public void Remove(long hallId);
 }

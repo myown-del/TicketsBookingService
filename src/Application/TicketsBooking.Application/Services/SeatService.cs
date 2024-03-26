@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using TicketsBooking.Application.Abstractions.Persistence.Repositories;
 using TicketsBooking.Application.Abstractions.Services;
+using TicketsBooking.Application.Models.Dto;
 using TicketsBooking.Application.Models.Entities;
 
 namespace TicketsBooking.Application.Services;
@@ -19,9 +20,9 @@ public class SeatService : ISeatService
         _seatRepository.Remove(seatId);
     }
 
-    public void CreateSeat(Seat seat)
+    public Seat CreateSeat(SeatDto seatDto)
     {
-        _seatRepository.Add(seat);
+        return _seatRepository.Add(seatDto);
     }
 
     public Seat? GetSeat(int seatId)

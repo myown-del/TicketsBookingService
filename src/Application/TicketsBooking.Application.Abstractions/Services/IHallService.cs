@@ -5,7 +5,7 @@ namespace TicketsBooking.Application.Abstractions.Services;
 
 public interface IHallService
 {
-    public void CreateHall(Hall hall);
+    public Hall CreateHall(string name, long venueId);
 
     public void DeleteHall(long hallId);
 
